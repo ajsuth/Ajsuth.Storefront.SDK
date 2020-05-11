@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  
+  <PropertyGroup>
+    <TargetFramework>net471</TargetFramework>
+    <Description>Foundation Commerce Connect</Description>
+    <Authors>Sitecore</Authors>
+    <PackageTags>$(PackageTags);Commerce;Experience;Connect;Foundation</PackageTags>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <RootNamespace>Foundation.Commerce.Connect</RootNamespace>
+    <AssemblyName>Foundation.Commerce.Connect</AssemblyName>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.OData.Core" version="7.5.0" />
+    <PackageReference Include="Microsoft.OData.Client" version="6.19.0">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Sitecore.Commerce.Connect.Core" version="14.0.*">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Sitecore.Commerce.ServiceProxy" Version="5.0.*" PrivateAssets="All" />
+    <PackageReference Include="Sitecore.Commerce.XA.Foundation.Connect" version="4.0.*">
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Sitecore.Kernel" Version="9.3.*" PrivateAssets="All" />
+  </ItemGroup>
+
+</Project>

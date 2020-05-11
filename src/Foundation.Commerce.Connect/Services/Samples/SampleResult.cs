@@ -1,0 +1,21 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="SampleResult.cs" company="Sitecore Corporation">
+//   Copyright (c) Sitecore Corporation 1999-2020
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace Foundation.Commerce.Connect.Services.Samples
+{
+    using Sitecore.Commerce.Services;
+
+    /// <summary>
+    /// The sample result.
+    /// </summary>
+    public class SampleResult : ServiceProviderResult
+    {
+        /// <summary>
+        /// Gets or sets the sample
+        /// </summary>
+        public string Sample { get; set; }
+    }
+}
