@@ -1,0 +1,21 @@
+﻿@using Sitecore.XA.Foundation.MarkupDecorator.Extensions
+@using Sitecore.XA.Foundation.SitecoreExtensions.Extensions
+@using Feature.Samples.Website.Models
+
+@model SampleRenderingModel
+
+@{
+    if (Model == null)
+    {
+        return;
+    }
+}
+
+<div @Html.Sxa().Component("cxa-sample-component", Model.Attributes)>
+    @if (!string.IsNullOrWhiteSpace(Model.SampleProperty))
+    {
+        <div>
+            @Model.SampleProperty
+        </div>
+    }
+</div>

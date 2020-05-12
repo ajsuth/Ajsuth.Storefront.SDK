@@ -80,7 +80,7 @@ namespace Feature.Samples.Website.Repositories
         {
             var jsonResult = ModelProvider.GetModel<SampleJsonResult>();
 
-            if (IsEdit)
+            if (PageMode.IsExperienceEditor)
             {
                 try
                 {
