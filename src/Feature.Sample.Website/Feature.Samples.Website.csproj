@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Feature.Sample.Website</RootNamespace>
-    <AssemblyName>Feature.Sample.Website</AssemblyName>
+    <RootNamespace>Feature.Samples.Website</RootNamespace>
+    <AssemblyName>Feature.Samples.Website</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -67,18 +67,23 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Managers\SampleManager.cs" />
-    <Compile Include="Managers\ISampleManager.cs" />
+    <Compile Include="Models\InputModels\GetSamplesInputModel.cs" />
+    <Compile Include="Models\JsonResults\SamplesJsonResult.cs" />
     <Compile Include="Models\JsonResults\SampleJsonResult.cs" />
     <Compile Include="Models\SampleRenderingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ISampleRepository.cs" />
     <Compile Include="Repositories\SampleRepository.cs" />
-    <Compile Include="SampleController.cs" />
+    <Compile Include="Controllers\SampleController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Config\" />
-    <Folder Include="Models\InputModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Foundation.Commerce.Connect\Foundation.Commerce.Connect.csproj">
+      <Project>{dbef84e9-de7d-4782-b4bf-97528b98fb12}</Project>
+      <Name>Foundation.Commerce.Connect</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

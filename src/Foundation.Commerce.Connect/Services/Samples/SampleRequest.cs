@@ -12,7 +12,7 @@ namespace Foundation.Commerce.Connect.Services.Samples
     /// <summary>
     /// Defines the SampleRequest class.
     /// </summary>
-    public class SampleRequest : ServiceProviderRequest
+    public class SampleRequest : CommerceRequest
     {
         /// <summary>
         /// Initializes a new instance of <see cref="SampleRequest"/>

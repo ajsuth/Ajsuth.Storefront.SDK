@@ -4,7 +4,7 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Feature.Samples.Website.Managers
+namespace Foundation.Commerce.Connect.Managers
 {
     using Foundation.Commerce.Connect.Entities;
     using Foundation.Commerce.Connect.Providers;
@@ -43,6 +43,31 @@ namespace Feature.Samples.Website.Managers
         public SampleServiceProvider SampleServiceProvider { get; set; }
 
         /// <summary>
+        /// Get the sample for the given visitor context.
+        /// </summary>
+        /// <param name="visitorContext">The visitor context.</param>
+        /// <param name="storefrontContext">The storefront context.</param>
+        /// <param name="propertyBag">The property bag.</param>
+        /// <returns>
+        /// The sample for the given visitor context.
+        /// </returns>
+        public virtual ManagerResponse<SampleResult, Sample> GetSample(IVisitorContext visitorContext, IStorefrontContext storefrontContext, StringPropertyCollection propertyBag = null)
+        {
+            Assert.ArgumentNotNull(visitorContext, nameof(visitorContext));
+            Assert.ArgumentNotNull(storefrontContext, nameof(storefrontContext));
+
+            var request = new SampleRequest("sample")
+            {
+                CustomerId = visitorContext.CustomerId
+            };
+            request.CopyPropertyBag(propertyBag);
+
+            var response = SampleServiceProvider.GetSample(request);
+
+            return new ManagerResponse<SampleResult, Sample>(response, response.Sample);
+        }
+
+        /// <summary>
         /// Get the samples for the given visitor context
         /// </summary>
         /// <param name="storefront">The storefront</param>
@@ -58,10 +83,7 @@ namespace Feature.Samples.Website.Managers
 
             var request = new GetSamplesRequest()
             {
-                CustomerIds = new[]
-                {
-                    visitorContext.CustomerId
-                }
+                CustomerId = visitorContext.CustomerId
             };
             request.CopyPropertyBag(propertyBag);
 

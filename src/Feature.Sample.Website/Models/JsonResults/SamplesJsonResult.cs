@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SampleJsonResult.cs" company="Sitecore Corporation">
+// <copyright file="SamplesJsonResult.cs" company="Sitecore Corporation">
 //   Copyright (c) Sitecore Corporation 1999-2020
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -8,52 +8,61 @@ namespace Feature.Samples.Website.Models.JsonResults
 {
     using Foundation.Commerce.Connect.Entities;
     using Sitecore.Commerce.XA.Foundation.Common.Context;
+    using Sitecore.Commerce.XA.Foundation.Common.Models;
     using Sitecore.Commerce.XA.Foundation.Common.Models.JsonResults;
     using Sitecore.Diagnostics;
+    using System.Collections.Generic;
+    using System.Web.Script.Serialization;
 
     /// <summary>
     /// The sample 
     /// </summary>
-    public class SampleJsonResult : BaseJsonResult
+    public class SamplesJsonResult : BaseJsonResult
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SampleJsonResult" /> class.
         /// </summary>
         /// <param name="context">The sitecore context.</param>
         /// <param name="storefrontContext">The storefront context.</param>
-        public SampleJsonResult(IContext context, IStorefrontContext storefrontContext)
+        public SamplesJsonResult(IContext context, IStorefrontContext storefrontContext, IModelProvider modelProvider)
             : base(context, storefrontContext)
         {
+            Assert.ArgumentNotNull(modelProvider, "modelProvider");
+
+            ModelProvider = modelProvider;
         }
 
         /// <summary>
-        /// Gets or sets the sample property.
+        /// Gets or sets the model provider.
         /// </summary>
         /// <value>
-        /// The sample property.
+        /// The model provider.
         /// </value>
-        public string SampleProperty { get; set; }
+        [ScriptIgnore]
+        public IModelProvider ModelProvider { get; protected set; }
 
         /// <summary>
-        /// Gets or sets the creation date.
+        /// Gets or sets the samples property.
         /// </summary>
         /// <value>
-        /// The creation date.
+        /// The samples property.
         /// </value>
-        public string CreationDate { get; set; }
+        public IEnumerable<SampleJsonResult> SamplesProperty { get; set; }
 
         /// <summary>
         /// Initialises the model.
         /// </summary>
         /// <param name="cart"></param>
         /// <param name="visitorContext"></param>
-        public virtual void Initialize(Sample sample)
+        public virtual void Initialize(IEnumerable<Sample> samples)
         {
-            Assert.ArgumentNotNull(sample, nameof(sample));
+            Assert.ArgumentNotNull(samples, nameof(samples));
 
-            SampleProperty = sample.ExternalId;
-            CreationDate = sample.DateCreated.ToString();
+            foreach (var sample in samples)
+            {
+                var sampleJsonResult = ModelProvider.GetModel<SampleJsonResult>();
+                sampleJsonResult.Initialize(sample);
+            }
         }
-
     }
 }

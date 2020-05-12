@@ -6,6 +6,7 @@
 
 namespace Foundation.Commerce.Connect.Services.Samples
 {
+    using Foundation.Commerce.Connect.Entities;
     using Sitecore.Commerce.Services;
 
     /// <summary>
@@ -16,6 +17,6 @@ namespace Foundation.Commerce.Connect.Services.Samples
         /// <summary>
         /// Gets or sets the sample
         /// </summary>
-        public string Sample { get; set; }
+        public Sample Sample { get; set; }
     }
 }

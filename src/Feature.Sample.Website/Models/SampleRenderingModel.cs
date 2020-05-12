@@ -4,9 +4,10 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Feature.Sample.Website.Models
+namespace Feature.Samples.Website.Models
 {
     using Sitecore.Commerce.XA.Foundation.Common.Models;
+    using Sitecore.XA.Foundation.SitecoreExtensions.Interfaces;
 
     public class SampleRenderingModel : BaseCommerceRenderingModel
     {
@@ -24,5 +25,14 @@ namespace Feature.Sample.Website.Models
         /// The sample property.
         /// </value>
         public string SampleProperty { get; set; }
+
+        /// <summary>
+        /// Initializes the specified rendering.
+        /// </summary>
+        /// <param name="rendering">The rendering.</param>
+        public virtual void Initialize(IRendering rendering)
+        {
+            SampleProperty = "sample";
+        }
     }
 }

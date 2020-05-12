@@ -14,6 +14,16 @@ namespace Foundation.Commerce.Connect.Services.Samples
     public class SampleServiceProvider : ServiceProvider
     {
         /// <summary>
+        /// Get Sample
+        /// </summary>
+        /// <param name="request">The request</param>
+        /// <returns>A <see cref="SampleResult"/></returns>
+        public virtual SampleResult GetSample(SampleRequest request)
+        {
+            return this.RunPipeline<SampleRequest, SampleResult>(ConnectConstants.Pipelines.Sample, request);
+        }
+
+        /// <summary>
         /// Get Samples 
         /// </summary>
         /// <param name="request">The request</param>

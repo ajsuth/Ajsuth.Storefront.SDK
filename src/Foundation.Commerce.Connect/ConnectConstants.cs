@@ -20,6 +20,11 @@ namespace Foundation.Commerce.Connect
             /// The get samples pipeline name.
             /// </summary>
             public const string GetSamples = "commerce.samples.getSamples";
+
+            /// <summary>
+            /// The sample pipeline name.
+            /// </summary>
+            public const string Sample = "commerce.samples.Sample";
         }
 
         /// <summary>
